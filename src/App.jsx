@@ -57,24 +57,25 @@ const ColorGame = () => {
       <div className="game-wrapper">
         <h1 className="title">Color Guessing Game</h1>
         
-        <p className="instructions">
+        <p className="instructions" data-testid="gameInstructions">
           Can you guess which color matches the one shown below? Click on your choice!
         </p>
 
-        <div className="target-color" style={{ backgroundColor: targetColor }} />
+        <div className="target-color" data-testid="colorBox" style={{ backgroundColor: targetColor }} />
 
         <div className="score-round-container">
-          <p className="score-round">Score: {score}</p>
+          <p className="score-round" data-testid="score">Score: {score}</p>
           <p className="score-round">Round: {round}/{MAX_ROUNDS}</p>
         </div>
 
-        {status && <p className="status">{status}</p>}
+        {status && <p className="status" data-testid="gameStatus">{status}</p>}
 
         <div className="color-grid">
           {options.map((color, index) => (
             <button
               key={index}
               className="color-option"
+              data-testid="colorOption"
               style={{ backgroundColor: color }}
               onClick={() => handleGuess(color)}
               aria-label={`Color option ${index + 1}`}
@@ -82,7 +83,7 @@ const ColorGame = () => {
           ))}
         </div>
 
-        <button className="new-game-button" onClick={startNewGame}>
+        <button className="new-game-button" data-testid="newGameButton" onClick={startNewGame}>
           New Game
         </button>
 
